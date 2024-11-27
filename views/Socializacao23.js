@@ -41,13 +41,10 @@ const Socializacao23 = ({ navigation }) => {
     <View style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Socialização      2 a 3 anos</Text>
+        <Text style={styles.headerText}>Socialização 2 a 3 anos</Text>
         <View style={styles.headerButtons}>
-          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{"<"}</Text>
-          </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Linguagem23')} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{">"}</Text>
+            <Text style={styles.navButtonText}>{" > "}</Text>
           </TouchableOpacity>
         </View>
       </View>

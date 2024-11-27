@@ -50,13 +50,13 @@ const AutoCuidados56 = ({ navigation }) => {
     <View style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Auto Cuidados    5 a 6 anos</Text>
+        <Text style={styles.headerText}>Auto Cuidados 5 a 6 anos</Text>
         <View style={styles.headerButtons}>
           <TouchableOpacity onPress={() => navigation.goBack('Cognicao56')} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{"<"}</Text>
+            <Text style={styles.navButtonText}>{" < "}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('DesenvMotor56')} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{">"}</Text>
+            <Text style={styles.navButtonText}>{" > "}</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -40,7 +40,7 @@ const CadastroUser = ({ navigation }) => {
 
     // Envia os dados para o servidor
     try {
-      const response = await fetch('http://172.16.6.227:3002/usuario/inserir', {
+      const response = await fetch('http://192.168.0.6:3002/usuario/inserir', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nome: name, email, senha: password }),

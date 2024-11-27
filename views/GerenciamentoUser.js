@@ -5,7 +5,7 @@ import { DataTable, TextInput, Modal, Portal, IconButton, Button } from 'react-n
 import { useFocusEffect } from '@react-navigation/native'; // Import useFocusEffect
 import axios from 'axios';
 
-const API_URL = 'http://172.16.6.227:3002'; // Use o IP e a porta do seu servidor
+const API_URL = 'http://192.168.0.6:3002'; // Use o IP e a porta do seu servidor
 
 const GerenciamentoUser = () => {
   const [visible, setVisible] = React.useState({

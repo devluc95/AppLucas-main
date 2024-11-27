@@ -49,13 +49,13 @@ const Linguagem45 = ({ navigation }) => {
     <View style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Linguagem       4 a 5 anos</Text>
+        <Text style={styles.headerText}>Linguagem 4 a 5 anos</Text>
         <View style={styles.headerButtons}>
           <TouchableOpacity onPress={() => navigation.goBack('Socializacao45')} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{"<"}</Text>
+            <Text style={styles.navButtonText}>{" < "}</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Cognicao45')} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{">"}</Text>
+            <Text style={styles.navButtonText}>{" > "}</Text>
           </TouchableOpacity>
         </View>
       </View>

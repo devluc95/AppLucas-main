@@ -51,10 +51,10 @@ const DesenvMotor45 = ({ navigation }) => {
     <View style={styles.container}>
       {/* Header Section */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>Desenvolvimento Motor    4 a 5 anos</Text>
+        <Text style={styles.headerText}>Desenvolvimento Motor {'\n'}4 a 5 anos</Text>
         <View style={styles.headerButtons}>
           <TouchableOpacity onPress={() => navigation.goBack('AutoCuidados45')} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{"<"}</Text>
+            <Text style={styles.navButtonText}>{" < "}</Text>
           </TouchableOpacity>
         </View>
       </View>

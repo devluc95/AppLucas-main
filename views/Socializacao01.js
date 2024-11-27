@@ -65,7 +65,7 @@ const Socializacao01 = ({ navigation }) => {
         <Text style={styles.headerText}>Socialização 0 a 1 ano        </Text>
         <View style={styles.headerButtons}>
           <TouchableOpacity onPress={() => navigation.navigate('Linguagem01')} style={styles.navButton}>
-            <Text style={styles.navButtonText}>{">"}</Text>
+            <Text style={styles.navButtonText}>{" > "}</Text>
           </TouchableOpacity>
         </View>
       </View>

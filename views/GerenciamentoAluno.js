@@ -5,7 +5,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { DataTable, TextInput, Modal, Portal, IconButton, Button, Text } from 'react-native-paper';
 import axios from 'axios';
 
-const API_URL = 'http://172.16.6.227:3002';
+const API_URL = 'http://192.168.0.6:3002';
 
 const GerenciamentoAluno = () => {
   const [visible, setVisible] = React.useState({
