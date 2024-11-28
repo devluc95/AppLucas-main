@@ -21,7 +21,7 @@ const AutoCuidados12 = ({ navigation }) => {
           text: "Cancelar",
           style: "cancel"
         },
-        { text: "Sim", onPress: () => navigation.navigate('CadastroAluno') }
+        { text: "Sim", onPress: () => navigation.navigate('WelcomeScreen') }
       ]
     );
   };
