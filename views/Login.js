@@ -8,7 +8,7 @@ const Login = ({ navigation, setIsLoggedIn }) => {
   const handleLogin = async () => {
     if (email && password) {
       try {
-        const response = await fetch('http://192.168.0.6:3002/usuario/login', { // Ajuste o URL conforme necessário
+        const response = await fetch('http://192.168.0.8:3002/usuario/login', { // Ajuste o URL conforme necessário
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -60,7 +60,7 @@ const Feedback = ({ navigation }) => {
       </View>
 
       {/* Botão Novo Teste */}
-      <TouchableOpacity style={styles.newTestButton} onPress={() => navigation.navigate('CadastroAluno')}>
+      <TouchableOpacity style={styles.newTestButton} onPress={() => navigation.navigate('Perguntas')}>
         <Text style={styles.newTestButtonText}>Novo Teste</Text>
       </TouchableOpacity>
     </View>

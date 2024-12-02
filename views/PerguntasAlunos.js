@@ -5,7 +5,7 @@ import { DataTable, Button } from 'react-native-paper';
 import axios from 'axios';
 
 
-const API_URL = 'http://192.168.0.6:3002'; // Use o IP e a porta do seu servidor
+const API_URL = 'http://192.168.0.8:3002'; // Use o IP e a porta do seu servidor
 
 const PerguntasAlunos = ({ navigation }) => {
   const [alunos, setAlunos] = React.useState([]);

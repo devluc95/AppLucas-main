@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { RadioButton } from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const DesenvMotor12 = ({ navigation }) => {
   const [checked, setChecked] = useState({});
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleRadioChange = (question, value) => {
     setChecked((prevChecked) => ({
       ...prevChecked,
       [question]: value,
     }));
+    setShowConfirmation(false);
   };
 
   const handleExit = () => {
@@ -24,6 +27,23 @@ const DesenvMotor12 = ({ navigation }) => {
         { text: "Sim", onPress: () => navigation.navigate('WelcomeScreen') }
       ]
     );
+  };
+
+  const handleSubmit = () => {
+    const allAnswered = questions.every((question) => checked[question]);
+
+    if (allAnswered) {
+      setShowConfirmation(true);
+      Alert.alert('Respostas enviadas', 'As respostas foram enviadas com sucesso!', [
+        { text: 'OK' },
+      ]);
+      console.log('Respostas:', checked);
+    } else {
+      Alert.alert(
+        'Perguntas incompletas',
+        'Todas as perguntas precisam ser preenchidas para enviar.'
+      );
+    }
   };
 
   const questions = [
@@ -69,7 +89,7 @@ const DesenvMotor12 = ({ navigation }) => {
             <View style={styles.radioButtonContainer}>
               <View style={styles.radioButtonRow}>
                 <RadioButton
-                  color='#000'
+                  color="#217744"
                   value="sim"
                   status={checked[question] === 'sim' ? 'checked' : 'unchecked'}
                   onPress={() => handleRadioChange(question, 'sim')}
@@ -78,7 +98,7 @@ const DesenvMotor12 = ({ navigation }) => {
               </View>
               <View style={styles.radioButtonRow}>
                 <RadioButton
-                  color='#000'
+                  color="#217744"
                   value="nao"
                   status={checked[question] === 'nao' ? 'checked' : 'unchecked'}
                   onPress={() => handleRadioChange(question, 'nao')}
@@ -87,7 +107,7 @@ const DesenvMotor12 = ({ navigation }) => {
               </View>
               <View style={styles.radioButtonRow}>
                 <RadioButton
-                  color='#000'
+                  color="#217744"
                   value="asVezes"
                   status={checked[question] === 'asVezes' ? 'checked' : 'unchecked'}
                   onPress={() => handleRadioChange(question, 'asVezes')}
@@ -99,8 +119,11 @@ const DesenvMotor12 = ({ navigation }) => {
         ))}
       </ScrollView>
 
-      {/* Next Button Section */}
-      <View style={styles.nextButtonContainer}>
+      {/* Exit and Submit Buttons */}
+      <View style={styles.exitButtonContainer}>
+        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+          <Text style={styles.submitButtonText}>Enviar Respostas</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Feedback')} style={styles.nextButton}>
           <Text style={styles.nextButtonText}>Gerar FeedBack</Text>
         </TouchableOpacity>
@@ -108,6 +131,14 @@ const DesenvMotor12 = ({ navigation }) => {
           <Text style={styles.exitButtonText}>Sair</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Confirmation Icon */}
+      {showConfirmation && (
+        <View style={styles.confirmationContainer}>
+          <Ionicons name="checkmark-circle" size={50} color="#217744" />
+          <Text style={styles.confirmationText}>Respostas enviadas!</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -166,11 +197,6 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   nextButtonContainer: {
-    alignItems: 'flex-end',
-    marginTop: 20,
-  },
-  nextButtonContainer: {
-    /* alignItems: 'flex-end', */
     flexDirection: 'row', // Alinha os botões horizontalmente
     justifyContent: 'space-between', // Espaçamento entre os botões
     marginTop: 20,
@@ -186,12 +212,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
   },
-  exitButton: {
-    backgroundColor: '#FF0000', // Cor vermelha para o botão "Sair"
-    padding: 15,
-    borderRadius: 5,
+  exitButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
   },
-
   exitButton: {
     padding: 10,
     backgroundColor: '#217744',
@@ -200,6 +225,24 @@ const styles = StyleSheet.create({
   exitButtonText: {
     color: 'white',
     fontSize: 16,
+  },
+  submitButton: {
+    padding: 10,
+    backgroundColor: '#217744',
+    borderRadius: 5,
+  },
+  submitButtonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  confirmationContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  confirmationText: {
+    color: '#217744',
+    fontSize: 18,
+    marginTop: 10,
   },
 });
 

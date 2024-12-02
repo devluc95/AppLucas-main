@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { DataTable, TextInput, Modal, Portal, IconButton, Button } from 'react-native-paper';
 import axios from 'axios';
 
-const API_URL = 'http://192.168.0.6:3002'; // Certifique-se de ajustar para o IP correto do servidor
+const API_URL = 'http://192.168.0.8:3002'; // Certifique-se de ajustar para o IP correto do servidor
 
 const HomeScreen = () => {
   const [visible, setVisible] = useState({

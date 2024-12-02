@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { RadioButton } from 'react-native-paper';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Linguagem12 = ({ navigation }) => {
   const [checked, setChecked] = useState({});
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleRadioChange = (question, value) => {
     setChecked((prevChecked) => ({
       ...prevChecked,
       [question]: value,
     }));
+    setShowConfirmation(false);
   };
 
   const handleExit = () => {
@@ -24,6 +27,23 @@ const Linguagem12 = ({ navigation }) => {
         { text: "Sim", onPress: () => navigation.navigate('WelcomeScreen') }
       ]
     );
+  };
+
+  const handleSubmit = () => {
+    const allAnswered = questions.every((question) => checked[question]);
+
+    if (allAnswered) {
+      setShowConfirmation(true);
+      Alert.alert('Respostas enviadas', 'As respostas foram enviadas com sucesso!', [
+        { text: 'OK' },
+      ]);
+      console.log('Respostas:', checked);
+    } else {
+      Alert.alert(
+        'Perguntas incompletas',
+        'Todas as perguntas precisam ser preenchidas para enviar.'
+      );
+    }
   };
 
   const questions = [
@@ -70,7 +90,7 @@ const Linguagem12 = ({ navigation }) => {
             <View style={styles.radioButtonContainer}>
               <View style={styles.radioButtonRow}>
                 <RadioButton
-                  color='#000'
+                  color="#217744"
                   value="sim"
                   status={checked[question] === 'sim' ? 'checked' : 'unchecked'}
                   onPress={() => handleRadioChange(question, 'sim')}
@@ -79,7 +99,7 @@ const Linguagem12 = ({ navigation }) => {
               </View>
               <View style={styles.radioButtonRow}>
                 <RadioButton
-                  color='#000'
+                  color="#217744"
                   value="nao"
                   status={checked[question] === 'nao' ? 'checked' : 'unchecked'}
                   onPress={() => handleRadioChange(question, 'nao')}
@@ -88,7 +108,7 @@ const Linguagem12 = ({ navigation }) => {
               </View>
               <View style={styles.radioButtonRow}>
                 <RadioButton
-                  color='#000'
+                  color="#217744"
                   value="asVezes"
                   status={checked[question] === 'asVezes' ? 'checked' : 'unchecked'}
                   onPress={() => handleRadioChange(question, 'asVezes')}
@@ -100,12 +120,23 @@ const Linguagem12 = ({ navigation }) => {
         ))}
       </ScrollView>
 
-      {/* Botão Sair */}
+      {/* Exit and Submit Buttons */}
       <View style={styles.exitButtonContainer}>
+        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+          <Text style={styles.submitButtonText}>Enviar Respostas</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.exitButton} onPress={handleExit}>
           <Text style={styles.exitButtonText}>Sair</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Confirmation Icon */}
+      {showConfirmation && (
+        <View style={styles.confirmationContainer}>
+          <Ionicons name="checkmark-circle" size={50} color="#217744" />
+          <Text style={styles.confirmationText}>Respostas enviadas!</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -164,7 +195,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   exitButtonContainer: {
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 20,
   },
   exitButton: {
@@ -175,6 +207,24 @@ const styles = StyleSheet.create({
   exitButtonText: {
     color: 'white',
     fontSize: 16,
+  },
+  submitButton: {
+    padding: 10,
+    backgroundColor: '#217744',
+    borderRadius: 5,
+  },
+  submitButtonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  confirmationContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  confirmationText: {
+    color: '#217744',
+    fontSize: 18,
+    marginTop: 10,
   },
 });
 
